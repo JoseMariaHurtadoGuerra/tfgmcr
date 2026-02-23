@@ -1,0 +1,4 @@
+cd C:\Users\User\Documents\tfgmcr
+git add src data results refs
+git commit -m "Añadir estructura de carpetas"
+git push
