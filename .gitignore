@@ -13,3 +13,6 @@ results/figures/*.svg
 # datos grandes (decide tú qué excluir)
 data/raw/**
 !data/raw/README.md
+
+# repos externos (no subir a tu repo)
+external/
