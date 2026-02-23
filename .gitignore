@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.spyderproject
+.spyproject
+.DS_Store
+
+# resultados y temporales
+results/figures/*.png
+results/figures/*.jpg
+results/figures/*.svg
+
+# datos grandes (decide tú qué excluir)
+data/raw/**
+!data/raw/README.md
