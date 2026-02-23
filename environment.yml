@@ -1,0 +1,13 @@
+name: tfg-mcr
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - matplotlib
+  - spyder
+  - pandas
+  - scipy
+  - numpy
+  - numba
+  - sympy
+prefix: C:\Users\User\miniforge3\envs\tfg-mcr
