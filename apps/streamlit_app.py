@@ -10,9 +10,16 @@ Created on Thu Feb 26 16:05:06 2026
 #python -m streamlit run apps\streamlit_app.py
 
 # apps/streamlit_app.py
+import sys
+from pathlib import Path
+
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+
+REPO_ROOT = Path(__file__).resolve().parents[1]  # .../tfgmcr
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
 from src.ccqe_curves import curve_theta, curve_q2_reparam
 
