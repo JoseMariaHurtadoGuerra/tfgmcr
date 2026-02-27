@@ -5,6 +5,10 @@ Created on Thu Feb 26 16:05:06 2026
 @author: User
 """
 
+
+#Para ejecutar en la web hay que poner esto en el miniforge: conda activate tfg-mcr
+#python -m streamlit run apps\streamlit_app.py
+
 # apps/streamlit_app.py
 import streamlit as st
 import pandas as pd
