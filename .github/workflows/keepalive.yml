@@ -11,6 +11,14 @@ jobs:
     steps:
       - name: Ping Streamlit app
         run: |
-          URL="https://calculodetrazasycontracciones1.streamlit.app/"
-          echo "Pinging $URL"
-          curl -L -sS --max-time 20 --retry 3 --retry-delay 5 "$URL" -o /dev/null -w "HTTP %{http_code}\n"
+          BASE="https://calculodetrazasycontracciones1.streamlit.app"
+          for endpoint in "/_stcore/health" "/"; do
+            URL="${BASE}${endpoint}"
+            echo "Pinging $URL"
+            CODE=$(curl -sS -o /dev/null -w "%{http_code}" --max-time 60 "$URL" || echo "000")
+            echo "HTTP $CODE"
+            if [ "$CODE" -ge 200 ] && [ "$CODE" -lt 400 ]; then
+              exit 0
+            fi
+          done
+          exit 1
