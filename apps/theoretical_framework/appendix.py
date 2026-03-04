@@ -10,7 +10,10 @@ import streamlit.components.v1 as components
 
 def render_appendix() -> None:
     # ------------------------------------------------------------
-    # NO st.set_page_config() here (must live only in app.py).
+    # IMPORTANT:
+    # - Do NOT call st.set_page_config() here (only in app.py).
+    # - Avoid \(...\) or \[...\] inside markdown text.
+    # - Put any nontrivial math in st.latex() (robust + readable).
     # ------------------------------------------------------------
 
     # Ensure repo root in sys.path (Cloud & local)
@@ -42,13 +45,12 @@ def render_appendix() -> None:
         st.markdown(f"<h3 id='{anchor}'>{text}</h3>", unsafe_allow_html=True)
 
     # -----------------------------
-    # Sidebar navigation that works inside WordPress iframe
+    # Sidebar navigation (appendix internal)
     # -----------------------------
-    st.sidebar.header("Navegación")
+    st.sidebar.header("Navegación (Apéndice)")
 
     def jump_to(anchor: str, label: str):
         if st.sidebar.button(label, use_container_width=True):
-            # Use parent document if embedded; fallback to current document.
             components.html(
                 f"""
                 <script>
@@ -80,7 +82,7 @@ def render_appendix() -> None:
     st.title("📘 Apéndice: Cálculo de trazas y contracciones")
     st.caption(
         r"""
-En este apéndice se recopilan las identidades y pasos intermedios utilizados en el cálculo
+En este apéndice se recopilan identidades y pasos intermedios utilizados en el cálculo
 del tensor leptónico, del tensor hadrónico y de la contracción
 $\tilde{\eta}_{\mu\nu}\tilde{W}^{\mu\nu}$.
 """
@@ -88,10 +90,9 @@ $\tilde{\eta}_{\mu\nu}\tilde{W}^{\mu\nu}$.
 
     # ============================================================
     h2("Álgebra de Clifford y convenciones", "clifford")
-    st.markdown(r"""
-Adoptamos unidades naturales (\(\hbar=c=1\)) y la convención \(\varepsilon^{0123}=+1\).
-Las matrices gamma satisfacen:
-""")
+    st.markdown("Adoptamos unidades naturales y la convención de Levi–Civita indicada. En particular:")
+    st.latex(r"\hbar=c=1,\qquad \varepsilon^{0123}=+1.")
+    st.markdown("Las matrices gamma satisfacen:")
     st.latex(r"\{\gamma^\mu,\gamma^\nu\}=2g^{\mu\nu}, \qquad \gamma_5 = i\gamma^0\gamma^1\gamma^2\gamma^3.")
 
     # ============================================================
@@ -134,19 +135,18 @@ Las matrices gamma satisfacen:
 
     # ============================================================
     h2("Proyectores quirales", "quirales")
-    st.markdown(r"Usaremos \(P_L=\frac{1-\gamma_5}{2}\), \(P_R=\frac{1+\gamma_5}{2}\), de modo que")
+    st.markdown("Definimos los proyectores quirales:")
+    st.latex(r"P_L=\frac{1-\gamma_5}{2},\qquad P_R=\frac{1+\gamma_5}{2}.")
+    st.markdown("y se cumple:")
     st.latex(r"(1-\gamma_5)^2 = 2(1-\gamma_5).")
 
     # ============================================================
     h2("Cálculo del tensor leptónico", "leptonico")
-
     st.markdown("Introducimos la notación:")
     st.latex(r"\tilde{\gamma}_\mu \equiv \gamma_\mu(1-\gamma_5) = \tilde{\gamma}_\mu^{V}+\tilde{\gamma}_\mu^{A}.")
     st.latex(r"\not{k}\equiv \gamma_\alpha k^\alpha.")
 
-    st.markdown(r"""
-Para el cálculo por trazas (aplicando completitud de espinores), aparece el objeto:
-""")
+    st.markdown("Para el cálculo por trazas (aplicando completitud de espinores), aparece el objeto:")
     st.latex(r"""
 \mathcal{T}_{\mu \nu}
 =
@@ -156,10 +156,10 @@ Para el cálculo por trazas (aplicando completitud de espinores), aparece el obj
 \right].
 """)
 
-    st.markdown(r"""
-Sustituyendo \(\tilde{\gamma}_\mu=\gamma_\mu(1-\gamma_5)\) y \(\tilde{\gamma}_\nu=\gamma_\nu(1-\gamma_5)\), y desarrollando:
-""")
-
+    # ✅ AQUÍ está el cambio que pedías (y lo aplico en todo el apéndice):
+    st.markdown("Sustituyendo las definiciones:")
+    st.latex(r"\tilde{\gamma}_\mu=\gamma_\mu(1-\gamma_5),\qquad \tilde{\gamma}_\nu=\gamma_\nu(1-\gamma_5).")
+    st.markdown("y desarrollando:")
     st.latex(r"""
 \mathcal{T}_{\mu \nu}
 =
@@ -177,42 +177,22 @@ Sustituyendo \(\tilde{\gamma}_\mu=\gamma_\mu(1-\gamma_5)\) y \(\tilde{\gamma}_\n
 \mathcal{T}_{\mu \nu}=\frac{1}{4m_\mu m_\nu}\,
 \Big(T_{\mu \nu}^{(1)}+T_{\mu \nu}^{(2)}+T_{\mu \nu}^{(3)}+T_{\mu \nu}^{(4)}\Big).
 """)
-
-    st.latex(r"""
-T_{\mu \nu}^{(1)}
-\equiv
-\mathrm{Tr}\!\left[\not{k}_f\gamma_\mu(1-\gamma_5)\not{k}_i\gamma_\nu(1-\gamma_5)\right].
-""")
-    st.latex(r"""
-T_{\mu \nu}^{(2)}
-\equiv
-m_\nu\,\mathrm{Tr}\!\left[\not{k}_f\gamma_\mu(1-\gamma_5)\gamma_\nu(1-\gamma_5)\right].
-""")
-    st.latex(r"""
-T_{\mu \nu}^{(3)}
-\equiv
-m_\mu\,\mathrm{Tr}\!\left[\gamma_\mu(1-\gamma_5)\not{k}_i\gamma_\nu(1-\gamma_5)\right].
-""")
-    st.latex(r"""
-T_{\mu \nu}^{(4)}
-\equiv
-m_\mu m_\nu\,\mathrm{Tr}\!\left[\gamma_\mu(1-\gamma_5)\gamma_\nu(1-\gamma_5)\right].
-""")
+    st.latex(r"T_{\mu \nu}^{(1)}\equiv \mathrm{Tr}\!\left[\not{k}_f\gamma_\mu(1-\gamma_5)\not{k}_i\gamma_\nu(1-\gamma_5)\right].")
+    st.latex(r"T_{\mu \nu}^{(2)}\equiv m_\nu\,\mathrm{Tr}\!\left[\not{k}_f\gamma_\mu(1-\gamma_5)\gamma_\nu(1-\gamma_5)\right].")
+    st.latex(r"T_{\mu \nu}^{(3)}\equiv m_\mu\,\mathrm{Tr}\!\left[\gamma_\mu(1-\gamma_5)\not{k}_i\gamma_\nu(1-\gamma_5)\right].")
+    st.latex(r"T_{\mu \nu}^{(4)}\equiv m_\mu m_\nu\,\mathrm{Tr}\!\left[\gamma_\mu(1-\gamma_5)\gamma_\nu(1-\gamma_5)\right].")
 
     # ============================================================
     h2("Simplificación usando γ5", "gamma5")
-    st.markdown("Usamos:")
+    st.markdown("Usamos las identidades:")
     st.latex(r"""
 \{\gamma_5,\gamma^\alpha\}=0,\qquad
 \gamma_5^2=\mathbb{I},\qquad
 \gamma_5\,\not{a}\,\gamma_5=-\not{a},\qquad
 \gamma_5\,\gamma^\alpha\,\gamma_5=-\gamma^\alpha.
 """)
-
-    st.markdown(r"En particular:")
-    st.latex(r"""
-P_L\,\gamma^\alpha\,P_L=0,\qquad P_L=\frac{1-\gamma_5}{2}.
-""")
+    st.markdown("En particular:")
+    st.latex(r"P_L\,\gamma^\alpha\,P_L=0,\qquad P_L=\frac{1-\gamma_5}{2}.")
 
     st.markdown("Consideremos el núcleo matricial:")
     st.latex(r"\gamma_\mu(1-\gamma_5)\,\not{k}_i\,\gamma_\nu(1-\gamma_5).")
@@ -255,7 +235,7 @@ T_{\mu\nu}^{(A)} \equiv
 =4\left(k_{f\mu}k_{i\nu}+k_{f\nu}k_{i\mu}-(k_f\!\cdot\!k_i)\,g_{\mu\nu}\right).
 """)
 
-    st.markdown("**(B) Término axial (con \(\gamma_5\))**")
+    st.markdown(r"**(B) Término axial (con $\gamma_5$)**")
     st.latex(r"""
 T_{\mu\nu}^{(B)} \equiv 
 \mathrm{Tr}\!\left[\not{k}_f\,\gamma_\mu\,\not{k}_i\,\gamma_\nu\,\gamma_5\right]
@@ -296,8 +276,8 @@ A^\alpha B^\beta\,\varepsilon_{\alpha\mu\beta\nu}\,\varepsilon^{\mu\nu\rho\lambd
 \tilde{W}^{\mu \nu}
 =
 \frac{1}{8M^2}\,
-\mathrm{Tr}\!\left[(\not{p}_f+M)\,\tilde{\Gamma}^{\mu}\,(\\not{p}_i+M)\,\overline{\tilde{\Gamma}^{\nu}}\right].
-""".replace(r"(\\" , "("))  # safety for accidental double escaping
+\mathrm{Tr}\!\left[(\not{p}_f+M)\,\tilde{\Gamma}^{\mu}\,(\not{p}_i+M)\,\overline{\tilde{\Gamma}^{\nu}}\right].
+""")
 
     st.markdown("En el régimen cuasi-elástico, el vértice hadrónico efectivo se parametriza como:")
     st.latex(r"""
@@ -328,7 +308,8 @@ F_1^V\,\gamma^{\nu}
 \tilde{\Gamma}^{\mu}_{A}=G_A\,\gamma^{\mu}\gamma^{5}+F_P\,Q^{\mu}\gamma^{5}.
 """)
 
-    st.markdown(r"Con ello \(\tilde{W}^{\mu\nu}=\tilde{W}^{\mu\nu}_V+\tilde{W}^{\mu\nu}_A+\tilde{W}^{\mu\nu}_{VA}\).")
+    st.markdown("Con ello:")
+    st.latex(r"\tilde{W}^{\mu\nu}=\tilde{W}^{\mu\nu}_V+\tilde{W}^{\mu\nu}_A+\tilde{W}^{\mu\nu}_{VA}.")
 
     # ============================================================
     h2("Término vectorial", "vectorial")
@@ -379,8 +360,7 @@ f_{11}^{\mu\nu}
     # ============================================================
     h2("Cálculo de", "f22")
     st.latex(r"f_{22}^{\mu\nu}")
-
-    st.markdown(r"Partimos de:")
+    st.markdown("Partimos de:")
     st.latex(r"""
 f_{22}^{\mu\nu}\equiv 
 \mathrm{Tr}\!\left[(\not{p}_f+M)\,\sigma^{\mu\alpha}Q_\alpha\,(\not{p}_i+M)\,\sigma^{\nu\beta}Q_\beta\right].
@@ -394,7 +374,7 @@ f_{22}^{\mu\nu}
 +M^2\,\mathrm{Tr}\!\left[\sigma^{\mu\alpha}Q_\alpha\,\sigma^{\nu\beta}Q_\beta\right].
 """)
 
-    st.markdown("**2) Término \(M^2\): traza \(\sigma\sigma\)**")
+    st.markdown("**2) Término $M^2$: traza $\sigma\sigma$**")
     st.latex(r"""
 \mathrm{Tr}\!\left(\sigma^{AB}\sigma^{CD}\right)=4\left(g^{AC}g^{BD}-g^{AD}g^{BC}\right),
 \qquad
@@ -422,7 +402,7 @@ f_{22}^{\mu\nu}
 \Big].
 """)
 
-    st.markdown("**4) Resultado final para \(f_{22}^{\mu\nu}\)**")
+    st.markdown("**4) Resultado final**")
     st.latex(r"""
 f_{22}^{\mu\nu}
 =
@@ -436,4 +416,4 @@ f_{22}^{\mu\nu}
 \Big].
 """)
 
-    st.success(r"✅ El resultado es simétrico en \(\mu\leftrightarrow\nu\), como corresponde al término puramente vectorial.")
+    st.success(r"✅ El resultado es simétrico en $\mu\leftrightarrow\nu$, como corresponde al término puramente vectorial.")
