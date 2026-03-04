@@ -65,7 +65,12 @@ def flux_folded_binned_xsec(
     Flux-folded and cut-applied bin-averaged <dσ/dQ2>:
 
       pred_bin = (1/ΔQ2) * (1/Φ_tot) ∫ dE φ(E) ∫_{bin} dQ2 [dσ/dQ2(E,Q2)] * cuts
+
+    NOTE: uses np.trapezoid (NumPy 2.x safe).
     """
+    # integration helper (NumPy 2.x)
+    trap = np.trapezoid
+
     flux_E = np.asarray(flux_E, dtype=float)
     flux_phi = np.asarray(flux_phi, dtype=float)
 
@@ -75,14 +80,15 @@ def flux_folded_binned_xsec(
     if len(E) < 5:
         raise ValueError("Flujo vacío/mal leído. Revisa el CSV del flujo y sus columnas.")
 
-    phi_tot = np.trapz(phi, E)
+    phi_tot = trap(phi, E)
     if phi_tot <= 0:
         raise ValueError("Normalización de flujo <=0. Revisa el CSV del flujo.")
 
     preds = np.zeros(len(q2_low), dtype=float)
 
     for i, (lo, hi) in enumerate(zip(q2_low, q2_high)):
-        lo = float(lo); hi = float(hi)
+        lo = float(lo)
+        hi = float(hi)
         q2_grid = np.linspace(lo, hi, nQ2)
 
         integrand_E = np.zeros_like(E)
@@ -96,10 +102,10 @@ def flux_folded_binned_xsec(
                 else:
                     vals[k] = float(dsigma_dQ2_callable(float(Ev), float(Q2), params))
 
-            int_Q2 = np.trapz(vals, q2_grid)
+            int_Q2 = trap(vals, q2_grid)
             integrand_E[j] = w_flux * int_Q2
 
-        num = np.trapz(integrand_E, E)
+        num = trap(integrand_E, E)
         preds[i] = (num / phi_tot) / (hi - lo)
 
     return preds
