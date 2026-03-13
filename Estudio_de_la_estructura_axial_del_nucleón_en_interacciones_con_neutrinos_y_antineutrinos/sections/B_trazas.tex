@@ -1,0 +1,615 @@
+% !TeX root = ../main.tex
+
+\section
+
+{Cálculo de trazas y contracciones}
+\label{app:trazas}
+
+En este apéndice se recopilan las identidades y pasos intermedios utilizados en el cálculo
+del tensor leptónico, del tensor hadrónico y de la contracción \(\tilde{\eta}_{\mu\nu}\tilde{W}^{\mu\nu}\).
+
+\subsection{Álgebra de Clifford y convenciones}
+Adoptamos unidades naturales (\(\hbar=c=1\)) y la convención \(\varepsilon^{0123}=+1\).
+Las matrices gamma satisfacen
+\begin{equation}
+\{\gamma^\mu,\gamma^\nu\}=2g^{\mu\nu}, \qquad \gamma_5 = i\gamma^0\gamma^1\gamma^2\gamma^3.
+\end{equation}
+
+\subsection{Trazas básicas}
+\begin{align}
+\mathrm{Tr}[\gamma^\mu\gamma^\nu] &= 4g^{\mu\nu},\\
+\mathrm{Tr}[\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma] 
+&=4\left(g^{\mu\nu}g^{\rho\sigma}-g^{\mu\rho}g^{\nu\sigma}+g^{\mu\sigma}g^{\nu\rho}\right),\\
+\mathrm{Tr}[\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma\gamma_5]
+&=-4i\,\varepsilon^{\mu\nu\rho\sigma},
+\end{align}
+% --- Traza de 6 matrices gamma (sin gamma5)
+\begin{align}
+\Tr\!\left[\gamma^{\mu_1}\gamma^{\mu_2}\gamma^{\mu_3}\gamma^{\mu_4}\gamma^{\mu_5}\gamma^{\mu_6}\right]
+=4\,\Big(&
+ g^{\mu_1\mu_2}g^{\mu_3\mu_4}g^{\mu_5\mu_6}
+- g^{\mu_1\mu_2}g^{\mu_3\mu_5}g^{\mu_4\mu_6}
++ g^{\mu_1\mu_2}g^{\mu_3\mu_6}g^{\mu_4\mu_5} \nonumber\\
+&- g^{\mu_1\mu_3}g^{\mu_2\mu_4}g^{\mu_5\mu_6}
++ g^{\mu_1\mu_3}g^{\mu_2\mu_5}g^{\mu_4\mu_6}
+- g^{\mu_1\mu_3}g^{\mu_2\mu_6}g^{\mu_4\mu_5} \nonumber\\
+&+ g^{\mu_1\mu_4}g^{\mu_2\mu_3}g^{\mu_5\mu_6}
+- g^{\mu_1\mu_4}g^{\mu_2\mu_5}g^{\mu_3\mu_6}
++ g^{\mu_1\mu_4}g^{\mu_2\mu_6}g^{\mu_3\mu_5} \nonumber\\
+&- g^{\mu_1\mu_5}g^{\mu_2\mu_3}g^{\mu_4\mu_6}
++ g^{\mu_1\mu_5}g^{\mu_2\mu_4}g^{\mu_3\mu_6}
+- g^{\mu_1\mu_5}g^{\mu_2\mu_6}g^{\mu_3\mu_4} \nonumber\\
+&+ g^{\mu_1\mu_6}g^{\mu_2\mu_3}g^{\mu_4\mu_5}
+- g^{\mu_1\mu_6}g^{\mu_2\mu_4}g^{\mu_3\mu_5}
++ g^{\mu_1\mu_6}g^{\mu_2\mu_5}g^{\mu_3\mu_4}
+\Big).
+\label{eq:trace_6gamma}
+\end{align}
+y la traza de un número impar de matrices gamma es nula.
+
+\subsection{Proyectores quirales}
+Usaremos \(P_L=\frac{1-\gamma_5}{2}\), \(P_R=\frac{1+\gamma_5}{2}\), de modo que
+\begin{equation}
+(1-\gamma_5)^2 = 2(1-\gamma_5).
+\end{equation}
+
+\subsection{Cálculo del tensor leptónico}
+\label{app:trazas:tensor_leptonico}
+
+Introducimos la notación
+\begin{equation}
+\tilde{\gamma}_\mu \equiv \gamma_\mu(1-\gamma_5)
+= \tilde{\gamma}_\mu^{\,V} + \tilde{\gamma}_\mu^{\,A},
+\end{equation}
+y utilizamos la abreviatura \(\slashed{k}\equiv \gamma_\alpha k^\alpha\). Para el cálculo por trazas
+(aplicando completitud de espinores), aparece el objeto
+\begin{equation}
+\mathcal{T}_{\mu \nu}
+\;=\;
+\Tr\!\left[
+\frac{\slashed{k}_f+m_\mu}{2m_\mu}\,\tilde{\gamma}_\mu\,
+\frac{\slashed{k}_i+m_\nu}{2m_\nu}\,\tilde{\gamma}_\nu
+\right],
+\label{eq:app_T_mu0_def}
+\end{equation}
+donde \(k_i\) y \(k_f\) denotan los cuadrimomentos inicial (del neutrino) y final (del leptón cargado),
+y \(m_\nu\) y \(m_\mu\) sus respectivas masas.
+
+Sustituyendo \(\tilde{\gamma}_\mu=\gamma_\mu(1-\gamma_5)\) y \(\tilde{\gamma}_\nu=\gamma_\nu(1-\gamma_5)\),
+y desarrollando los paréntesis, se obtiene
+\begin{align}
+\mathcal{T}_{\mu \nu}
+&=
+\Tr\!\left[
+\frac{\slashed{k}_f+m_\mu}{2m_\mu}\,\gamma_\mu(1-\gamma_5)\,
+\frac{\slashed{k}_i+m_\nu}{2m_\nu}\,\gamma_\nu(1-\gamma_5)
+\right]
+\nonumber\\[3pt]
+&=
+\frac{1}{(2m_\mu)(2m_\nu)}\,
+\Tr\!\left[
+(\slashed{k}_f\gamma_\mu(1-\gamma_5)+m_\mu\gamma_\mu(1-\gamma_5))\,
+(\slashed{k}_i\gamma_\nu(1-\gamma_5)+m_\nu\gamma_\nu(1-\gamma_5))
+\right]
+\nonumber\\[3pt]
+&=
+\frac{1}{4m_\mu m_\nu}\,
+\Tr\!\Big[
+\slashed{k}_f\gamma_\mu(1-\gamma_5)\slashed{k}_i\gamma_\nu(1-\gamma_5)
++\slashed{k}_f\gamma_\mu(1-\gamma_5)\,m_\nu\gamma_\nu(1-\gamma_5)
+\nonumber\\
+&\hspace{3.3cm}
++m_\mu\gamma_\mu(1-\gamma_5)\slashed{k}_i\gamma_\nu(1-\gamma_5)
++m_\mu\gamma_\mu(1-\gamma_5)\,m_\nu\gamma_\nu(1-\gamma_5)
+\Big].
+\label{eq:app_T_mu0_expand}
+\end{align}
+
+A partir de aquí, separamos la contribución total en cuatro trazas:
+\begin{equation}
+\mathcal{T}_{\mu \nu}=\frac{1}{4m_\mu m_\nu}\,
+\Big(T_{\mu \nu}^{(1)}+T_{\mu \nu}^{(2)}+T_{\mu \nu}^{(3)}+T_{\mu \nu}^{(4)}\Big),
+\label{eq:app_T_mu0_split}
+\end{equation}
+con
+\begin{align}
+T_{\mu \nu}^{(1)}
+&\equiv
+\Tr\!\left[\slashed{k}_f\gamma_\mu(1-\gamma_5)\slashed{k}_i\gamma_\nu(1-\gamma_5)\right],
+\label{eq:app_T_red}
+\\
+T_{\mu \nu}^{(2)}
+&\equiv
+m_\nu\,\Tr\!\left[\slashed{k}_f\gamma_\mu(1-\gamma_5)\gamma_\nu(1-\gamma_5)\right],
+\label{eq:app_T_blue}
+\\
+T_{\mu \nu}^{(3)}
+&\equiv
+m_\mu\,\Tr\!\left[\gamma_\mu(1-\gamma_5)\slashed{k}_i\gamma_\nu(1-\gamma_5)\right],
+\label{eq:app_T_green}
+\\
+T_{\mu \nu}^{(4)}
+&\equiv
+m_\mu m_\nu\,\Tr\!\left[\gamma_\mu(1-\gamma_5)\gamma_\nu(1-\gamma_5)\right].
+\label{eq:app_T_purple}
+\end{align}
+
+% ------------------------------------------------------------
+\subsubsection*{Simplificación usando $\gamma_5$}
+\label{app:trazas:simplificacion_gamma5}
+
+La expansión de los factores quirales puede reorganizarse usando las propiedades
+\begin{equation}
+\{\gamma_5,\gamma^\alpha\}=0,
+\qquad
+\gamma_5^2=\mathbb{I},
+\qquad
+\gamma_5\,\slashed{a}\,\gamma_5=-\slashed{a},
+\qquad
+\gamma_5\,\gamma^\alpha\,\gamma_5=-\gamma^\alpha,
+\label{eq:gamma5_identities}
+\end{equation}
+válidas para cualquier cuadrivector \(a^\mu\). En particular,
+\begin{equation}
+P_L\,\gamma^\alpha\,P_L=0,
+\qquad
+P_L=\frac{1-\gamma_5}{2},
+\label{eq:PLgammaPL_zero}
+\end{equation}
+lo cual explica por qué ciertos términos con dos proyectores consecutivos se anulan.
+
+Consideremos el núcleo matricial que aparece en las trazas de (B.9),
+\begin{equation}
+\gamma_\mu(1-\gamma_5)\,\slashed{k}_i\,\gamma_\nu(1-\gamma_5).
+\end{equation}
+Al expandir \((1-\gamma_5)(1-\gamma_5)\) se obtiene
+\begin{align}
+\gamma_\mu(1-\gamma_5)\,\slashed{k}_i\,\gamma_\nu(1-\gamma_5)
+&=
+\gamma_\mu\slashed{k}_i\gamma_\nu
+-\gamma_\mu\gamma_5\slashed{k}_i\gamma_\nu
+-\gamma_\mu\slashed{k}_i\gamma_\nu\gamma_5
++\gamma_\mu\gamma_5\slashed{k}_i\gamma_\nu\gamma_5.
+\label{eq:expand_chiral_kernel}
+\end{align}
+El último término puede simplificarse aplicando \eqref{eq:gamma5_identities}:
+\begin{align}
+\gamma_\mu\gamma_5\slashed{k}_i\gamma_\nu\gamma_5
+&=\gamma_\mu(\gamma_5\slashed{k}_i\gamma_5)(\gamma_5\gamma_\nu\gamma_5)
+=\gamma_\mu(-\slashed{k}_i)(-\gamma_\nu)
+=\gamma_\mu\slashed{k}_i\gamma_\nu.
+\label{eq:last_equals_first}
+\end{align}
+Por tanto, en cualquier traza en la que aparezca el bloque anterior,
+los términos ``(1)'' y ``(4)'' son iguales, y la combinación completa se reduce a
+\begin{equation}
+\Tr[\cdots\,\gamma_\mu(1-\gamma_5)\slashed{k}_i\gamma_\nu(1-\gamma_5)\,\cdots]
+=
+2\,\Tr[\cdots\,\gamma_\mu\slashed{k}_i\gamma_\nu\,\cdots]
+-\Tr[\cdots\,\gamma_\mu\gamma_5\slashed{k}_i\gamma_\nu\,\cdots]
+-\Tr[\cdots\,\gamma_\mu\slashed{k}_i\gamma_\nu\gamma_5\,\cdots].
+\label{eq:trace_reduction_2minus1minus1}
+\end{equation}
+
+Aplicando esta identidad a la descomposición de (B.10), puede tomarse directamente
+\begin{equation}
+T_{\mu\nu}^{(4)} = T_{\mu\nu}^{(1)}
+\label{eq:T4_equals_T1}
+\end{equation}
+de modo que la suma de cuatro trazas de la expresión (B.18) se reescribe como
+\begin{equation}
+\gamma_\mu\slashed{k}_i\gamma_\nu
+-\gamma_\mu\gamma_5\slashed{k}_i\gamma_\nu
+-\gamma_\mu\slashed{k}_i\gamma_\nu\gamma_5
++\gamma_\mu\gamma_5\slashed{k}_i\gamma_\nu\gamma_5
+=
+2T_{\mu\nu}^{(A)}-T_{\mu\nu}^{(B)}-T_{\mu\nu}^{(C)}
+\label{eq:final_simplified_sum}
+\end{equation}
+
+% ------------------------------------------------------------
+% ------------------------------------------------------------
+\subsubsection*{Evaluación de $T_{\mu\nu}^{(A)}$, $T_{\mu\nu}^{(B)}$ y $T_{\mu\nu}^{(C)}$}
+\label{app:trazas:eval_T_munu_ABC}
+
+Tras la simplificación (véase la discusión previa), basta evaluar
+\begin{equation}
+T_{\mu\nu}=2T_{\mu\nu}^{(A)}-T_{\mu\nu}^{(B)}-T_{\mu\nu}^{(C)}.
+\label{eq:T_munu_reduced_ABC}
+\end{equation}
+Usamos \(\slashed{k}\equiv \gamma_\alpha k^\alpha\), y denotamos por \(k_i\) y \(k_f\)
+los cuadrimomentos inicial y final del leptón. Recordamos que la traza de un número
+impar de matrices gamma es nula.
+
+% --------------------------
+\paragraph{(A) Término vectorial.}
+Definimos
+\begin{equation}
+T_{\mu\nu}^{(A)} \equiv 
+\Tr\!\left[\slashed{k}_f\,\gamma_\mu\,\slashed{k}_i\,\gamma_\nu\right]
+= k_f^\alpha k_i^\beta\;\Tr\!\left[\gamma_\alpha\gamma_\mu\gamma_\beta\gamma_\nu\right].
+\end{equation}
+Usando
+\(\Tr[\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma]
+=4(g^{\mu\nu}g^{\rho\sigma}-g^{\mu\rho}g^{\nu\sigma}+g^{\mu\sigma}g^{\nu\rho})\),
+se obtiene
+\begin{equation}
+T_{\mu\nu}^{(A)}
+=4\left(k_{f\mu}k_{i\nu}+k_{f\nu}k_{i\mu}-(k_f\!\cdot\!k_i)\,g_{\mu\nu}\right).
+\label{eq:TA_munu}
+\end{equation}
+
+% --------------------------
+\paragraph{(B) Término axial (con $\gamma_5$).}
+Definimos
+\begin{equation}
+T_{\mu\nu}^{(B)} \equiv 
+\Tr\!\left[\slashed{k}_f\,\gamma_\mu\,\slashed{k}_i\,\gamma_\nu\,\gamma_5\right]
+= k_f^\alpha k_i^\beta\;\Tr\!\left[\gamma_\alpha\gamma_\mu\gamma_\beta\gamma_\nu\gamma_5\right].
+\end{equation}
+Usando
+\(\Tr[\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma\gamma_5]
+=-4i\,\varepsilon^{\mu\nu\rho\sigma}\),
+obtenemos
+\begin{equation}
+T_{\mu\nu}^{(B)}=-4i\,\varepsilon_{\alpha\mu\beta\nu}\,k_f^\alpha k_i^\beta.
+\label{eq:TB_munu}
+\end{equation}
+
+% --------------------------
+\paragraph{(C) Segundo término axial (orden equivalente).}
+De forma análoga,
+\begin{equation}
+T_{\mu\nu}^{(C)} \equiv 
+\Tr\!\left[\slashed{k}_f\,\gamma_\mu\,\slashed{k}_i\,\gamma_\nu\,\gamma_5\right]
+=-4i\,\varepsilon_{\alpha\mu\beta\nu}\,k_f^\alpha k_i^\beta,
+\label{eq:TC_munu}
+\end{equation}
+de manera que \(T_{\mu\nu}^{(B)}=T_{\mu\nu}^{(C)}\) en este caso.
+
+% --------------------------
+\paragraph{Resultado final.}
+Sustituyendo \eqref{eq:TA_munu}--\eqref{eq:TC_munu} en \eqref{eq:T_munu_reduced_ABC} se obtiene
+\begin{align}
+T_{\mu\nu}
+&=8\left(k_{f\mu}k_{i\nu}+k_{f\nu}k_{i\mu}-(k_f\!\cdot\!k_i)\,g_{\mu\nu}\right)
++8i\,\varepsilon_{\alpha\mu\beta\nu}\,k_f^\alpha k_i^\beta.
+\label{eq:T_munu_final_ABC}
+\end{align}
+
+\subsection{Contracciones de tensores de Levi-Civita}
+Se emplea la identidad
+\begin{equation}
+\varepsilon_{\alpha\mu\beta\nu}\,\varepsilon^{\mu\nu\rho\lambda}
+=-2\Big(\delta_\alpha^{\ \rho}\delta_\beta^{\ \lambda}-\delta_\alpha^{\ \lambda}\delta_\beta^{\ \rho}\Big),
+\end{equation}
+y, en particular,
+\begin{equation}
+A^\alpha B^\beta\,\varepsilon_{\alpha\mu\beta\nu}\,\varepsilon^{\mu\nu\rho\lambda}
+=-2\left(A^\rho B^\lambda - A^\lambda B^\rho\right).
+\end{equation}
+
+\subsection{Tensor hadrónico: descomposición vectorial, axial y vector--axial}
+\label{app:tensor_hadronico}
+
+Partimos de la definición (promedio sobre el espín inicial y suma sobre el final)
+\begin{align}
+\tilde{W}^{\mu \nu}
+&\equiv
+\sum_{s_f,s_i}
+\Big[\bar{u}_p(p_f,s_f)\,\tilde{\Gamma}^{\mu}\,u_n(p_i,s_i)\Big]\,
+\Big[\bar{u}_p(p_f,s_f)\,\overline{\tilde{\Gamma}^{\nu}}\,u_n(p_i,s_i)\Big]
+\nonumber\\[4pt]
+&=
+\frac{1}{8M^2}\,
+\Tr\!\left[(\slashed{p}_f+M)\,\tilde{\Gamma}^{\mu}\,(\slashed{p}_i+M)\,\overline{\tilde{\Gamma}^{\nu}}\right].
+\label{eq:Wtilde_r0_trace}
+\end{align}
+
+En el régimen cuasi-elástico, el vértice hadrónico efectivo se parametriza como
+\begin{align}
+\tilde{\Gamma}^{\mu}
+&=
+F_1^V\,\gamma^{\mu}
++i\,\frac{F_2^V}{2M}\,\sigma^{\mu\alpha}Q_\alpha
++G_A\,\gamma^{\mu}\gamma^{5}
++F_P\,Q^{\mu}\gamma^{5},
+\label{eq:Gammatilde_r}\\[4pt]
+\overline{\tilde{\Gamma}^{\nu}}
+&=
+F_1^V\,\gamma^{\nu}
+-i\,\frac{F_2^V}{2M}\,\sigma^{\nu\beta}Q_\beta
++G_A\,\gamma^{\nu}\gamma^{5}
+-F_P\,Q^{\nu}\gamma^{5},
+\label{eq:Gammatilde_0}
+\end{align}
+donde \(\sigma^{\mu\nu}\equiv \frac{i}{2}[\gamma^\mu,\gamma^\nu]\).
+
+Para separar contribuciones vectoriales y axiales, definimos
+\begin{equation}
+\tilde{\Gamma}^{\mu}=\tilde{\Gamma}^{\mu}_{V}+\tilde{\Gamma}^{\mu}_{A},
+\qquad
+\tilde{\Gamma}^{\mu}_{V}\equiv
+F_1^V\,\gamma^{\mu}
++i\,\frac{F_2^V}{2M}\,\sigma^{\mu\alpha}Q_\alpha,
+\qquad
+\tilde{\Gamma}^{\mu}_{A}\equiv
+G_A\,\gamma^{\mu}\gamma^{5}
++F_P\,Q^{\mu}\gamma^{5}.
+\label{eq:Gammatilde_split}
+\end{equation}
+
+Sustituyendo \eqref{eq:Gammatilde_split} en \eqref{eq:Wtilde_r0_trace} y expandiendo,
+\begin{align}
+\tilde{W}^{\mu \nu}
+&=
+\frac{1}{8M^2}\,
+\Tr\!\left[(\slashed{p}_f+M)\,(\tilde{\Gamma}^{\mu}_{V}+\tilde{\Gamma}^{\mu}_{A})\,(\slashed{p}_i+M)\,(\overline{\tilde{\Gamma}^{\nu}_{V}}+\overline{\tilde{\Gamma}^{\nu}_{A}}\right]
+\nonumber\\[4pt]
+&=
+\frac{1}{8M^2}\,
+\Tr\!\left[(\slashed{p}_f+M)\,\tilde{\Gamma}^{\mu}_{V}\,(\slashed{p}_i+M)\,\overline{\tilde{\Gamma}^{\nu}_{V}}\right]
++
+\frac{1}{8M^2}\,
+\Tr\!\left[(\slashed{p}_f+M)\,\tilde{\Gamma}^{\mu}_{A}\,(\slashed{p}_i+M)\,\overline{\tilde{\Gamma}^{\nu}_{A}}\right]
+\nonumber\\
+&\quad+
+\frac{1}{8M^2}\,
+\Tr\!\left[(\slashed{p}_f+M)\,\tilde{\Gamma}^{\mu}_{V}\,(\slashed{p}_i+M)\,\overline{\tilde{\Gamma}^{\nu}_{A}}
++(\slashed{p}_f+M)\,\tilde{\Gamma}^{\mu}_{A}\,(\slashed{p}_i+M)\,\overline{\tilde{\Gamma}^{\nu}_{V}}\right]
+\nonumber\\[4pt]
+&\equiv
+\tilde{W}^{\mu \nu}_{V}+\tilde{W}^{\mu \nu}_{A}+\tilde{W}^{\mu \nu}_{VA}.
+\label{eq:Wtilde_r0_split}
+\end{align}
+
+\subsubsection{Término vectorial: descomposición en $f_{11}^{\mu\nu}$, $f_{22}^{\mu\nu}$ y $f_{12}^{\mu\nu}$}
+\label{app:hadronico:vectorial_munu}
+
+El término vectorial del tensor hadrónico se escribe como
+\begin{equation}
+\tilde{W}^{\mu\nu}_{V}
+=\frac{1}{8M^2}\,
+\Tr\!\left[(\slashed{p}_f+M)\,\tilde{\Gamma}^{\mu}_{V}\,(\slashed{p}_i+M)\,\overline{\tilde{\Gamma}^{\nu}_{V}}\right].
+\label{eq:WtildeV_munu_def}
+\end{equation}
+Sustituyendo
+\begin{equation}
+\tilde{\Gamma}^{\mu}_{V}=F_1^V\,\gamma^{\mu}
++i\,\frac{F_2^V}{2M}\,\sigma^{\mu\alpha}Q_\alpha,
+\qquad
+\overline{\tilde{\Gamma}^{\nu}_{V}}=F_1^V\,\gamma^{\nu}
+-i\,\frac{F_2^V}{2M}\,\sigma^{\nu\beta}Q_\beta,
+\label{eq:GammatildeV_munu}
+\end{equation}
+obtenemos
+\begin{align}
+\tilde{W}^{\mu\nu}_{V}
+&=
+\frac{1}{8M^2}\,
+\Tr\!\left[
+(\slashed{p}_f+M)
+\left(F_1^V\gamma^{\mu}+i\frac{F_2^V}{2M}\sigma^{\mu\alpha}Q_\alpha\right)
+(\slashed{p}_i+M)
+\left(F_1^V\gamma^{\nu}-i\frac{F_2^V}{2M}\sigma^{\nu\beta}Q_\beta\right)
+\right].
+\label{eq:WtildeV_munu_expand0}
+\end{align}
+
+Desarrollando el producto se obtiene (nótese que el factor \((\slashed{p}_i+M)\) aparece en ambos
+términos cruzados):
+\begin{align}
+\tilde{W}^{\mu\nu}_{V}
+&=
+\frac{1}{8M^2}\,
+\Tr\!\left[(\slashed{p}_f+M)\,(F_1^V\gamma^{\mu})\,(\slashed{p}_i+M)\,(F_1^V\gamma^{\nu})\right]
+\nonumber\\[4pt]
+&\quad+
+\frac{1}{8M^2}\,
+\Tr\!\left[
+\left(i\frac{F_2^V}{2M}\right)\left(-i\frac{F_2^V}{2M}\right)
+(\slashed{p}_f+M)\,\sigma^{\mu\alpha}Q_\alpha\,(\slashed{p}_i+M)\,\sigma^{\nu\beta}Q_\beta
+\right]
+\nonumber\\[4pt]
+&\quad+
+\frac{1}{8M^2}\,
+\Tr\!\left[
+(\slashed{p}_f+M)\left(i\frac{F_2^V}{2M}\sigma^{\mu\alpha}Q_\alpha\right)(\slashed{p}_i+M)(F_1^V\gamma^{\nu})
+-
+(\slashed{p}_f+M)(F_1^V\gamma^{\mu})(\slashed{p}_i+M)\left(i\frac{F_2^V}{2M}\sigma^{\nu\beta}Q_\beta\right)
+\right]
+\nonumber\\[6pt]
+&=
+\frac{1}{8M^2}\left[
+(F_1^V)^2\,f_{11}^{\mu\nu}
++\frac{(F_2^V)^2}{4M^2}\,f_{22}^{\mu\nu}
++\frac{i\,F_1^V F_2^V}{2M}\,f_{12}^{\mu\nu}
+\right],
+\label{eq:WtildeV_munu_split_f}
+\end{align}
+donde definimos
+\begin{align}
+f_{11}^{\mu\nu}
+&\equiv
+\Tr\!\left[(\slashed{p}_f+M)\,\gamma^{\mu}\,(\slashed{p}_i+M)\,\gamma^{\nu}\right],
+\label{eq:f11_munu_def}
+\\[4pt]
+f_{22}^{\mu\nu}
+&\equiv
+\Tr\!\left[(\slashed{p}_f+M)\,\sigma^{\mu\alpha}Q_\alpha\,(\slashed{p}_i+M)\,\sigma^{\nu\beta}Q_\beta\right],
+\label{eq:f22_munu_def}
+\\[4pt]
+f_{12}^{\mu\nu}
+&\equiv
+\Tr\!\left[
+(\slashed{p}_f+M)\,\sigma^{\mu\alpha}Q_\alpha\,(\slashed{p}_i+M)\,\gamma^{\nu}
+-(\slashed{p}_f+M)\,\gamma^{\mu}\,(\slashed{p}_i+M)\,\sigma^{\nu\beta}Q_\beta
+\right].
+\label{eq:f12_munu_def}
+\end{align}
+
+\subsubsection*{Cálculo de $f_{11}^{\mu\nu}$}
+\label{app:hadronico:f11_munu}
+
+Calculamos \(f_{11}^{\mu\nu}\) paso a paso:
+\begin{align}
+f_{11}^{\mu\nu}
+&=
+\Tr\!\left[(\slashed{p}_f+M)\,\gamma^{\mu}\,(\slashed{p}_i+M)\,\gamma^{\nu}\right]
+\nonumber\\
+&=
+\Tr\!\left[\slashed{p}_f\,\gamma^{\mu}\,\slashed{p}_i\,\gamma^{\nu}\right]
++M\,\Tr\!\left[\slashed{p}_f\,\gamma^{\mu}\,\gamma^{\nu}\right]
++M\,\Tr\!\left[\gamma^{\mu}\,\slashed{p}_i\,\gamma^{\nu}\right]
++M^2\,\Tr\!\left[\gamma^{\mu}\gamma^{\nu}\right].
+\label{eq:f11_munu_expand_terms}
+\end{align}
+Los dos términos intermedios se anulan por contener un número impar de matrices gamma,
+\(\Tr[\gamma\gamma\gamma]=0\). Por tanto,
+\begin{align}
+f_{11}^{\mu\nu}
+&=
+\Tr\!\left[\slashed{p}_f\,\gamma^{\mu}\,\slashed{p}_i\,\gamma^{\nu}\right]
++M^2\,\Tr\!\left[\gamma^{\mu}\gamma^{\nu}\right]
+\nonumber\\
+&=
+p_f^\rho p_i^\sigma\,\Tr\!\left[\gamma_\rho\gamma^{\mu}\gamma_\sigma\gamma^{\nu}\right]
++4M^2\,g^{\mu\nu}.
+\label{eq:f11_munu_reduce_4gamma}
+\end{align}
+Usando
+\begin{equation}
+\Tr[\gamma^\rho\gamma^\mu\gamma^\sigma\gamma^\nu]
+=
+4\left(g^{\rho\mu}g^{\sigma\nu}-g^{\rho\sigma}g^{\mu\nu}+g^{\rho\nu}g^{\mu\sigma}\right),
+\end{equation}
+se obtiene
+\begin{align}
+p_f^\rho p_i^\sigma\,\Tr\!\left[\gamma_\rho\gamma^{\mu}\gamma_\sigma\gamma^{\nu}\right]
+&=
+4\,p_f^\rho p_i^\sigma
+\left(g_{\rho}^{\ \mu}g_{\sigma}^{\ \nu}-g_{\rho\sigma}g^{\mu\nu}+g_{\rho}^{\ \nu}g_{\sigma}^{\ \mu}\right)
+\nonumber\\
+&=
+4\left(p_f^{\mu}p_i^{\nu}+p_f^{\nu}p_i^{\mu}-(p_f\!\cdot\!p_i)\,g^{\mu\nu}\right).
+\label{eq:f11_munu_trace_eval}
+\end{align}
+Finalmente,
+\begin{equation}
+f_{11}^{\mu\nu}
+=
+4\left[p_f^{\mu}p_i^{\nu}+p_f^{\nu}p_i^{\mu}+\left(M^2-p_f\!\cdot\!p_i\right)g^{\mu\nu}\right].
+\label{eq:f11_munu_final}
+\end{equation}
+
+\subsubsection*{Cálculo de $f_{22}^{\mu\nu}$ }
+\label{app:hadronico:f22_munu_correcto}
+
+Partimos de
+\begin{equation}
+f_{22}^{\mu\nu}\equiv 
+\Tr\!\left[(\slashed{p}_f+M)\,\sigma^{\mu\alpha}Q_\alpha\,(\slashed{p}_i+M)\,\sigma^{\nu\beta}Q_\beta\right].
+\label{eq:f22_def_munu}
+\end{equation}
+
+%------------------------------------------------------------
+\paragraph{1) Expansión en masas y cancelación de trazas impares.}
+Desarrollando \((\slashed p_{f,i}+M)\),
+\begin{align}
+f_{22}^{\mu\nu}
+&=
+\Tr\!\left[\slashed{p}_f\,\sigma^{\mu\alpha}Q_\alpha\,\slashed{p}_i\,\sigma^{\nu\beta}Q_\beta\right]
++M\,\Tr\!\left[\sigma^{\mu\alpha}Q_\alpha\,\slashed{p}_i\,\sigma^{\nu\beta}Q_\beta\right]
+\nonumber\\
+&\quad
++M\,\Tr\!\left[\slashed{p}_f\,\sigma^{\mu\alpha}Q_\alpha\,\sigma^{\nu\beta}Q_\beta\right]
++M^2\,\Tr\!\left[\sigma^{\mu\alpha}Q_\alpha\,\sigma^{\nu\beta}Q_\beta\right].
+\end{align}
+Los términos lineales en \(M\) contienen un número impar de matrices gamma y se anulan, por lo que
+\begin{equation}
+f_{22}^{\mu\nu}
+=
+\Tr\!\left[\slashed{p}_f\,\sigma^{\mu\alpha}Q_\alpha\,\slashed{p}_i\,\sigma^{\nu\beta}Q_\beta\right]
++M^2\,\Tr\!\left[\sigma^{\mu\alpha}Q_\alpha\,\sigma^{\nu\beta}Q_\beta\right].
+\label{eq:f22_reduced_mass}
+\end{equation}
+
+%------------------------------------------------------------
+\paragraph{2) Término $M^2$: traza $\sigma\sigma$.}
+Usamos
+\begin{equation}
+\Tr\!\left(\sigma^{AB}\sigma^{CD}\right)=4\left(g^{AC}g^{BD}-g^{AD}g^{BC}\right),
+\end{equation}
+de modo que, para \(A=\mu,B=\alpha,C=\nu,D=\beta\),
+\begin{equation}
+\Tr\!\left[\sigma^{\mu\alpha}Q_\alpha\,\sigma^{\nu\beta}Q_\beta\right]
+=
+4\left(g^{\mu\nu}Q^2-Q^\mu Q^\nu\right).
+\label{eq:sigmasigma_contracted}
+\end{equation}
+
+%------------------------------------------------------------
+\paragraph{3) Término principal:
+\begin{equation}
+\sigma^{\mu\alpha}Q_\alpha=\frac{i}{2}\left(\gamma^\mu\slashed{Q}-\slashed{Q}\gamma^\mu\right),
+\qquad
+\{\gamma^\mu,\slashed{Q}\}=2Q^\mu,
+\end{equation}
+para escribir de forma equivalente
+\begin{equation}
+\sigma^{\mu\alpha}Q_\alpha=i\left(\gamma^\mu\slashed{Q}-Q^\mu\right),
+\qquad
+\sigma^{\nu\beta}Q_\beta=i\left(\gamma^\nu\slashed{Q}-Q^\nu\right).
+\label{eq:sigmaQ_i_form}
+\end{equation}
+Entonces \(i\,i=-1\) y
+\begin{align}
+\Tr\!\left[\slashed{p}_f\,\sigma^{\mu\alpha}Q_\alpha\,\slashed{p}_i\,\sigma^{\nu\beta}Q_\beta\right]
+&=
+-\Tr\!\left[\slashed{p}_f\left(\gamma^\mu\slashed{Q}-Q^\mu\right)\slashed{p}_i\left(\gamma^\nu\slashed{Q}-Q^\nu\right)\right]
+\nonumber\\
+&=
+-\Tr\!\left[\slashed{p}_f\gamma^\mu\slashed{Q}\slashed{p}_i\gamma^\nu\slashed{Q}\right]
++Q^\nu \Tr\!\left[\slashed{p}_f\gamma^\mu\slashed{Q}\slashed{p}_i\right]
++Q^\mu \Tr\!\left[\slashed{p}_f\slashed{p}_i\gamma^\nu\slashed{Q}\right]
+\nonumber\\
+&\quad
+- Q^\mu Q^\nu \Tr\!\left[\slashed{p}_f\slashed{p}_i\right].
+\label{eq:f22_core_expanded}
+\end{align}
+Las tres últimas trazas son de 4 y 2 gammas y se evalúan directamente; la primera es de 6 gammas
+y se reduce con la identidad general del Apéndice (traza de 6 gammas).
+
+Tras efectuar las contracciones y reordenar en invariantes escalares, se obtiene el resultado compacto:
+\begin{align}
+\Tr\!\left[\slashed{p}_f\,\sigma^{\mu\alpha}Q_\alpha\,\slashed{p}_i\,\sigma^{\nu\beta}Q_\beta\right]
+=
+4\Big[&
+- Q^2\!\left(p_f^\mu p_i^\nu+p_f^\nu p_i^\mu\right)
++\left(p_f\!\cdot\!Q\right)\left(Q^\mu p_i^\nu+Q^\nu p_i^\mu\right)
++\left(p_i\!\cdot\!Q\right)\left(Q^\mu p_f^\nu+Q^\nu p_f^\mu\right)
+\nonumber\\
+&-\left(p_f\!\cdot\!p_i\right)Q^\mu Q^\nu
++g^{\mu\nu}\Big(Q^2(p_f\!\cdot\!p_i)-2(p_f\!\cdot\!Q)(p_i\!\cdot\!Q)\Big)
+\Big].
+\label{eq:f22_core_final_correct}
+\end{align}
+
+%------------------------------------------------------------
+\paragraph{4) Resultado final para $f_{22}^{\mu\nu}$.}
+Combinando \eqref{eq:f22_reduced_mass}, \eqref{eq:sigmasigma_contracted} y \eqref{eq:f22_core_final_correct}:
+\begin{align}
+f_{22}^{\mu\nu}
+=
+4\Big[&
+- Q^2\!\left(p_f^\mu p_i^\nu+p_f^\nu p_i^\mu\right)
++\left(p_f\!\cdot\!Q\right)\left(Q^\mu p_i^\nu+Q^\nu p_i^\mu\right)
++\left(p_i\!\cdot\!Q\right)\left(Q^\mu p_f^\nu+Q^\nu p_f^\mu\right)
+\nonumber\\
+&-\left(p_f\!\cdot\!p_i\right)Q^\mu Q^\nu
++g^{\mu\nu}\Big(Q^2(p_f\!\cdot\!p_i)-2(p_f\!\cdot\!Q)(p_i\!\cdot\!Q)\Big)
++M^2\left(g^{\mu\nu}Q^2-Q^\mu Q^\nu\right)
+\Big].
+\label{eq:f22_final_correct}
+\end{align}
+Este resultado es simétrico en \(\mu\leftrightarrow\nu\), como corresponde al término puramente vectorial.

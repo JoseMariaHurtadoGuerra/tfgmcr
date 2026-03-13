@@ -1,0 +1,20 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Motivación, objetivos y metodología}{2}{section.1}%
+\contentsline {section}{\numberline {2}Introducción general}{2}{section.2}%
+\contentsline {section}{\numberline {3}Formalismo de la interacción débil para la dispersión elástica $\nu $--$N$ mediada por CC}{2}{section.3}%
+\contentsline {section}{\numberline {4}Análisis y discusión de resultados}{2}{section.4}%
+\contentsline {section}{\numberline {5}Conclusiones}{2}{section.5}%
+\contentsline {section}{\numberline {A}Relaciones cinemáticas e identidades auxiliares}{2}{appendix.Alph1}%
+\contentsline {subsection}{\numberline {A.1}Álgebra de Clifford y convenciones}{3}{subsection.Alph1.1}%
+\contentsline {subsection}{\numberline {A.2}Trazas básicas}{3}{subsection.Alph1.2}%
+\contentsline {subsection}{\numberline {A.3}Proyectores quirales}{3}{subsection.Alph1.3}%
+\contentsline {subsection}{\numberline {A.4}Cálculo del tensor leptónico}{3}{subsection.Alph1.4}%
+\contentsline {paragraph}{(A) Término vectorial.}{5}{section*.4}%
+\contentsline {paragraph}{(B) Término axial (con $\gamma _5$).}{5}{section*.5}%
+\contentsline {paragraph}{(C) Segundo término axial (orden equivalente).}{5}{section*.6}%
+\contentsline {paragraph}{Resultado final.}{5}{section*.7}%
+\contentsline {subsection}{\numberline {A.5}Contracciones de tensores de Levi-Civita}{5}{subsection.Alph1.5}%
+\contentsline {subsection}{\numberline {A.6}Tensor hadrónico: descomposición vectorial, axial y vector--axial}{6}{subsection.Alph1.6}%
+\contentsline {subsubsection}{\numberline {A.6.1}Término vectorial: descomposición en $f_{11}^{\mu \nu }$, $f_{22}^{\mu \nu }$ y $f_{12}^{\mu \nu }$}{6}{subsubsection.Alph1.6.1}%
+\contentsline {paragraph}{1) Expansión en masas y cancelación de trazas impares.}{8}{section*.10}%
+\contentsline {paragraph}{2) Término $M^2$: traza $\sigma \sigma $.}{8}{section*.11}%
